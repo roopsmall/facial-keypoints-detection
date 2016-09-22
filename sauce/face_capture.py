@@ -1,5 +1,5 @@
 from matplotlib import pyplot as plt
-from cv2 import VideoCapture, cvtColor, COLOR_BGR2GRAY, COLOR_BGR2HSV, THRESH_BINARY, flip
+from cv2 import VideoCapture, cvtColor, flip, adaptiveThreshold, ADAPTIVE_THRESH_GAUSSIAN_C, COLOR_BGR2GRAY, COLOR_BGR2HSV, THRESH_BINARY
 from cv2 import threshold as thresh
 from numpy import ceil
 
@@ -28,7 +28,10 @@ class plot(object):
 		"""return threshold image"""
 
 		im = cvtColor(im, COLOR_BGR2GRAY)
-                if method is not None:
+		if method == ADAPTIVE_THRESH_GAUSSIAN_C:
+			im = adaptiveThreshold(im, 255, ADAPTIVE_THRESH_GAUSSIAN_C, THRESH_BINARY, 11, 2)
+
+                elif method is not None:
 			_, im = thresh(im, 100, 255, method)
 
 		return im
@@ -77,6 +80,7 @@ if __name__ == '__main__':
 	methods = [{'method': 'filter', 'arguments': {'filter': None}}, 
 			{'method': 'filter', 'arguments': {'filter': COLOR_BGR2GRAY}}, 
 			{'method': 'threshold', 'arguments': {'method':THRESH_BINARY}, 'cmap':'gray'}, 
-			{'method': 'threshold', 'arguments': {'method':THRESH_BINARY}, 'cmap':'magma'}]
+			{'method': 'threshold', 'arguments': {'method':THRESH_BINARY}, 'cmap':'magma'},
+			{'method': 'threshold', 'arguments': {'method':ADAPTIVE_THRESH_GAUSSIAN_C}, 'cmap':'magma'}]
 
 	plot().camera(methods)
