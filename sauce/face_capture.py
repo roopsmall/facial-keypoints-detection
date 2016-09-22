@@ -78,7 +78,8 @@ class plot(object):
 if __name__ == '__main__':
 
 	methods = [{'method': 'filter', 'arguments': {'filter': None}}, 
-			{'method': 'filter', 'arguments': {'filter': COLOR_BGR2GRAY}}, 
+			{'method': 'filter', 'arguments': {'filter': COLOR_BGR2GRAY}},
+			{'method': 'filter', 'arguments': {'filter': COLOR_BGR2HSV}}, 
 			{'method': 'threshold', 'arguments': {'method':THRESH_BINARY}, 'cmap':'gray'}, 
 			{'method': 'threshold', 'arguments': {'method':THRESH_BINARY}, 'cmap':'magma'},
 			{'method': 'threshold', 'arguments': {'method':ADAPTIVE_THRESH_GAUSSIAN_C}, 'cmap':'magma'}]
