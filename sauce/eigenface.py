@@ -1,4 +1,4 @@
-from numpy import genfromtxt, savetxt, linalg, dot, ceil, floor, argsort
+from numpy import genfromtxt, savetxt, linalg, dot, ceil, floor, argsort, sum, flipud
 from PIL import Image, ImageDraw
 import seaborn as sns
 
@@ -32,8 +32,7 @@ class run(object):
 
 			return True
 
-		except Exception as e:
-			print e
+		except:
 			return False
 
 
@@ -49,54 +48,54 @@ class run(object):
         				face = topN[:,eachline]
         				mx, mn = max(vector), min(vector)
         				face = (face - mn)*255.0/mx
-        				im = face.reshape(face_shape)
-        				im = Image.fromarray(im).convert('RGB')
+        				face = flipud(face.reshape(face_shape))
+        				im = Image.fromarray(face).convert('RGB')
         				im.save(image_out.replace('.png','') + '_' + eachline + '.png')
 
 			return topN
 
 		except:
-			return 1
+			return False
 
 
 
-	def reconstruct_face(self, face_vector, N=10, eigenvectors='../data/eigenvectors.csv', delimiter=',', face_shape=(96,96), image_out=None):
+	def reconstruct_face(self, face_vector, N=100, eigenvectors='../data/eigenvectors.csv', delimiter=',', face_shape=(96,96), image_out=None):
 
 
 		try:
 			topN = self.top_eigenvectors(N=N)
-        		coefficients = [dot(face_vector.T, topN[i]) for i in range(0,N)]
+        		coefficients = [dot(face_vector, topN[:,i]) for i in range(0,N)]
         		reconstruction = coefficients*topN
         		reconstruction = sum(reconstruction, 1)
         		mx, mn = max(reconstruction), min(reconstruction)
         		reconstruction = (reconstruction - mn)*255./mx
-        		im = reconstruction.reshape((96,96))
-        		im = Image.fromarray(im).convert('RGB')
+        		reconstruction = flipud(reconstruction.reshape((96,96)))
+        		im = Image.fromarray(reconstruction).convert('RGB')
         		if image_out is not None:
 				im.save(image_out.replace('.png','') + '.png')
 			
 			return im
 			
 		except:
-			return 1
+			return False
 
 
 
 if __name__ == '__main__':
 
-
+	# define constants for this run
 	faces_data_file = '../data/test.csv'
 	num_faces = 10
 	rows = 2
 	cols = int(ceil(num_faces/float(rows)))
 
-	# perform PCA, save results to CSV file	
-	run.pca(data_file_in=faces_data_file, offset=1)
+	# perform PCA, save results to CSV file	(so only need to do it once)
+	#run.pca(data_file_in=faces_data_file, offset=1)
 	
 	# get some 10 faces and reconstruct them
 	faces = genfromtxt(faces_data_file, delimiter=',')[:num_faces,1:]
 
-	# instantiate (memorise the eigenvalues)
+	# instantiate (memorise the eigenvalues. Achtung: memory intensive !)
 	eig = run()
 	
 	# plot
@@ -104,5 +103,6 @@ if __name__ == '__main__':
 	for i in range(num_faces):
 	        sns.plt.subplot(rows, cols, i+1)
 		sns.plt.imshow(eig.reconstruct_face(faces[i,:]))
+		sns.plt.axis('off')
 	sns.plt.show()	
 	
