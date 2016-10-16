@@ -5,8 +5,8 @@ The twittersphere for data-science related commentary was set alight anew this w
 
 The article contains many fantastic visualisations which, being written in javascript[[6](https://github.com/karpathy/tsnejs)], run live in your browser. It is well worth a look. Also worth noting is that many recent efforts in Machine Learning have focused on porting algorithms to javascript for running in-browser. This is a natural consequence of the relentless movement towards mobile and the rise and rise of mobile processing power, a fact to incorporate when you decide what to focus on next.
 
-## Dinosaurs
-While t-SNE enjoys well-deserved fame it is smart not to overlook the less popular members of the family, in this case Principal Component Analysis (PCA) [[7](https://en.wikipedia.org/wiki/Principal_component_analysis)] (not to be confused with Professional Cricket), the juggernaut of dimensionality reduction. Lets look at PCA again.
+## Not Dinosaurs Yet
+While t-SNE enjoys well-deserved fame it is smart not to overlook the less popular members of the family, in this case Principal Component Analysis (PCA)`[`[7](https://en.wikipedia.org/wiki/Principal_component_analysis)`]` (not to be confused with Professional Cricket), the juggernaut of dimensionality reduction. Lets look at PCA again.
 
 ## The Everything Machine
 Imagine living in a universe where everything, but everything, is a simple recipe of 5 pure, immutable ingredients:
@@ -28,7 +28,7 @@ This question allows us to do something incredible and completely awesome: it al
 If instead of describing the universe in terms of 5 key ingredients you want to describe just human faces, dresses or cats then hey, your dreams just took one step closer to becoming a computational reality: computers are already capable of finding reduced representations of faces, dresses and cats. Fantastic ! To note, because the method of finding the reduced set of ingredients is PCA which involves the geometric objects known as "eigenvectors", you will commonly see citizens of the interweb refer to these reduced representations as eigenfaces, eigendresses and eigencats respectively. It's nothing to worry about. "Eigen" in front of the word is simply to indicate that PCA was used in some way.
 
 ## No One Algorithm Should Have All Dat Powah
-The moral of the story is that PCA, being the answer to that simple and profound question "_Which N ingredients would best approximate X ?_", is incredibly powerful too. Granted, perhaps not for the graphs it generates, but certainly for the universality and applicability of its algorithm. As we help to raise t-SNE to new heights lets not leave behind our philosophical old friend, PCA.
+The moral of the story is that PCA, being the answer to that simple and profound question _Which N ingredients would best approximate X ?_, is incredibly powerful too. Granted, perhaps not for the graphs it generates, but certainly for the universality and applicability of its algorithm. As we help to raise t-SNE to new heights lets not leave behind our philosophical old friend, PCA.
 
 ### References
 [0] The homepage of the t-SNE algorithm. http://lvdmaaten.github.io/tsne/
