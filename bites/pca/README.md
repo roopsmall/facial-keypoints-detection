@@ -6,7 +6,7 @@ The twittersphere for data-science related commentary was set alight anew this w
 The article contains many fantastic visualisations which, being written in javascript[[6](https://github.com/karpathy/tsnejs)], run live in your browser. It is well worth a look. Also worth noting is that many recent efforts in Machine Learning have focused on porting algorithms to javascript for running in-browser. This is a natural consequence of the relentless movement towards mobile and the rise and rise of mobile processing power, a fact to incorporate when you decide what to focus on next.
 
 ## Not Dinosaurs Yet
-While t-SNE enjoys well-deserved fame it is smart not to overlook the less popular members of the family, in this case Principal Component Analysis (PCA)[[7](https://en.wikipedia.org/wiki/Principal_component_analysis)]  (not to be confused with Professional Cricket), the juggernaut of dimensionality reduction. Lets look at PCA again.
+While t-SNE enjoys well-deserved fame it is smart not to overlook the less popular members of the family, in this case Principal Component Analysis (PCA)[[7](https://en.wikipedia.org/wiki/Principal_component_analysis)] -- not to be confused with Professional Cricket -- the juggernaut of dimensionality reduction. Lets look at PCA again.
 
 ## The Everything Machine
 Imagine living in a universe where everything, but everything, is a simple recipe of 5 pure, immutable ingredients:
